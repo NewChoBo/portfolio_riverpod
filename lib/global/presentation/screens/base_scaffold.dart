@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_riverpod/app_router.dart';
+import 'package:portfolio_riverpod/global/presentation/widgets/base_drawer.dart';
+import 'package:portfolio_riverpod/global/presentation/widgets/base_navigation_bar.dart';
 
 class BaseScaffold extends StatefulWidget {
   final Widget body;
@@ -56,43 +58,7 @@ class _BaseScaffoldState extends State<BaseScaffold> with RouteAware {
     final router = AutoRouter.of(context);
 
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              child: const Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                router.push(const HomeRoute());
-              },
-            ),
-            ListTile(
-              title: const Text('Post'),
-              onTap: () {
-                router.push(const PostRoute());
-              },
-            ),
-            ListTile(
-              title: const Text('User'),
-              onTap: () {
-                router.push(const UserRoute());
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: BaseDrawer(router: router),
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: Text(
@@ -107,36 +73,8 @@ class _BaseScaffoldState extends State<BaseScaffold> with RouteAware {
         },
         child: const Icon(Icons.mouse),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              router.push(const HomeRoute());
-              break;
-            case 1:
-              router.push(const PostRoute());
-              break;
-            case 2:
-              router.push(const UserRoute());
-              break;
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.post_add),
-            label: 'Post',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'User',
-          ),
-        ],
-      ),
+      bottomNavigationBar:
+          BaseNavigationBar(currentIndex: currentIndex, router: router),
     );
   }
 }

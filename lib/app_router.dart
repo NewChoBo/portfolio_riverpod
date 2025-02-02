@@ -10,8 +10,8 @@ part 'app_router.gr.dart'; // 코드 제너레이터에 의해 생성될 파일
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: HomeRoute.page, initial: true),
-        AutoRoute(page: PostRoute.page),
-        AutoRoute(page: UserRoute.page),
+        AutoRoute(path: '/', page: HomeRoute.page, initial: true),
+        AutoRoute(path: '/post', page: PostRoute.page),
+        AutoRoute(path: '/user', page: UserRoute.page),
       ];
 }

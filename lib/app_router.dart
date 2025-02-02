@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:portfolio_riverpod/home/presentation/screens/home_screen.dart';
 import 'package:portfolio_riverpod/post/presentation/screens/post_screen.dart';
 import 'package:portfolio_riverpod/user/presentation/screens/user_screen.dart';

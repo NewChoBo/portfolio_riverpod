@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class UserScreen extends StatelessWidget {
-  const UserScreen({super.key, required this.num});
-
-  final int num;
+  const UserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class UserScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Text("second screen $num"),
+        child: Text("second screen"),
       ),
     );
   }

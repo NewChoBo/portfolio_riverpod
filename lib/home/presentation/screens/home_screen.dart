@@ -2,6 +2,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_riverpod/app_router.dart';
+import 'package:portfolio_riverpod/global/presentation/screens/base_scaffold.dart';
 
 @RoutePage() // 어노테이션 추가
 class HomeScreen extends StatelessWidget {
@@ -11,51 +12,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = AutoRouter.of(context);
 
-    return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                router.push(const HomeRoute());
-              },
-            ),
-            ListTile(
-              title: const Text('Post'),
-              onTap: () {
-                router.push(const PostRoute());
-              },
-            ),
-            ListTile(
-              title: const Text('User'),
-              onTap: () {
-                router.push(const UserRoute());
-              },
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Text(
-          "Auto route 예제",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+    return BaseScaffold(
+      title: "Home Screen",
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -78,12 +36,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          router.push(const HomeRoute());
-        },
-        child: const Icon(Icons.mouse),
       ),
     );
   }

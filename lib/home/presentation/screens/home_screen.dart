@@ -12,6 +12,43 @@ class HomeScreen extends StatelessWidget {
     final router = AutoRouter.of(context);
 
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+              ),
+              child: Text(
+                'Drawer Header',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text('Home'),
+              onTap: () {
+                router.push(const HomeRoute());
+              },
+            ),
+            ListTile(
+              title: const Text('Post'),
+              onTap: () {
+                router.push(const PostRoute());
+              },
+            ),
+            ListTile(
+              title: const Text('User'),
+              onTap: () {
+                router.push(const UserRoute());
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text(
@@ -34,13 +71,19 @@ class HomeScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  router.push(UserRoute(num: 1));
+                  router.push(UserRoute());
                 },
                 child: const Text("Go to second screen"),
               ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          router.push(const HomeRoute());
+        },
+        child: const Icon(Icons.mouse),
       ),
     );
   }

@@ -41,3 +41,37 @@ class PostRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [UserScreen]
+class UserRoute extends PageRouteInfo<UserRouteArgs> {
+  UserRoute({Key? key, required int num, List<PageRouteInfo>? children})
+    : super(
+        UserRoute.name,
+        args: UserRouteArgs(key: key, num: num),
+        initialChildren: children,
+      );
+
+  static const String name = 'UserRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<UserRouteArgs>();
+      return UserScreen(key: args.key, num: args.num);
+    },
+  );
+}
+
+class UserRouteArgs {
+  const UserRouteArgs({this.key, required this.num});
+
+  final Key? key;
+
+  final int num;
+
+  @override
+  String toString() {
+    return 'UserRouteArgs{key: $key, num: $num}';
+  }
+}

@@ -32,6 +32,12 @@ class HomeScreen extends StatelessWidget {
                 },
                 child: const Text("Go to first screen"),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  router.push(UserRoute(num: 1));
+                },
+                child: const Text("Go to second screen"),
+              ),
             ],
           ),
         ),

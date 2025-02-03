@@ -1,16 +1,12 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_riverpod/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 class BaseNavigationBar extends StatelessWidget {
+  final int currentIndex;
   const BaseNavigationBar({
     super.key,
     required this.currentIndex,
-    required this.router,
   });
-
-  final int currentIndex;
-  final StackRouter router;
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +15,13 @@ class BaseNavigationBar extends StatelessWidget {
       onTap: (index) {
         switch (index) {
           case 0:
-            router.push(const HomeRoute());
+            context.go('/'); // go to Home
             break;
           case 1:
-            router.push(const PostRoute());
+            context.go('/post'); // go to Post
             break;
           case 2:
-            router.push(const UserRoute());
+            context.go('/user'); // go to User
             break;
         }
       },

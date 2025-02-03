@@ -1,14 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_riverpod/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 class BaseDrawer extends StatelessWidget {
   const BaseDrawer({
     super.key,
-    required this.router,
   });
-
-  final StackRouter router;
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +27,19 @@ class BaseDrawer extends StatelessWidget {
           ListTile(
             title: const Text('Home'),
             onTap: () {
-              router.push(const HomeRoute());
+              context.go('/home');
             },
           ),
           ListTile(
             title: const Text('Post'),
             onTap: () {
-              router.push(const PostRoute());
+              context.go('/post');
             },
           ),
           ListTile(
             title: const Text('User'),
             onTap: () {
-              router.push(const UserRoute());
+              context.go('/user');
             },
           ),
         ],

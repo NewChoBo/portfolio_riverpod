@@ -1,28 +1,42 @@
+// dart
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:portfolio_riverpod/app_router.dart';
+import 'package:go_router/go_router.dart';
+import 'package:portfolio_riverpod/home/presentation/screens/home_screen.dart';
+import 'package:portfolio_riverpod/post/presentation/screens/post_screen.dart';
+import 'package:portfolio_riverpod/user/presentation/screens/user_screen.dart';
 
 void main() {
-  usePathUrlStrategy();
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  static final GoRouter _router = GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const HomeScreen(),
+        routes: [
+          GoRoute(
+            path: 'post',
+            builder: (context, state) => const PostScreen(),
+          ),
+          GoRoute(
+            path: 'user',
+            builder: (context, state) => const UserScreen(),
+          ),
+        ],
+      ),
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
-    final appRouter = AppRouter();
-
     return MaterialApp.router(
-      title: 'Portfolio Gallery',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      routerConfig: appRouter.config(),
+      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
+      title: 'Portfolio Riverpod',
     );
   }
 }

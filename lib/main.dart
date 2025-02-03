@@ -1,4 +1,3 @@
-// dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_riverpod/home/presentation/screens/home_screen.dart';
@@ -34,9 +33,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
       title: 'Portfolio Riverpod',
+      routerConfig: _router,
     );
   }
 }

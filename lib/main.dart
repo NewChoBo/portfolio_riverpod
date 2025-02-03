@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_riverpod/home/presentation/screens/home_screen.dart';
 import 'package:portfolio_riverpod/post/presentation/screens/post_screen.dart';
 import 'package:portfolio_riverpod/user/presentation/screens/user_screen.dart';
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(const MyApp());
 }
 

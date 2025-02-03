@@ -1,6 +1,4 @@
-// TODO: Home 기능의 화면(Screen)을 구현하세요.
 import 'package:flutter/material.dart';
-import 'package:portfolio_riverpod/global/presentation/screens/base_scaffold.dart';
 import 'package:go_router/go_router.dart'; // Added import
 
 class HomeScreen extends StatelessWidget {
@@ -8,8 +6,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScaffold(
-      title: "Home Screen",
+    return Scaffold(
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,

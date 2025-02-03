@@ -1,17 +1,13 @@
 // TODO: Home 기능의 화면(Screen)을 구현하세요.
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_riverpod/app_router.dart';
 import 'package:portfolio_riverpod/global/presentation/screens/base_scaffold.dart';
+import 'package:go_router/go_router.dart'; // Added import
 
-@RoutePage() // 어노테이션 추가
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final router = AutoRouter.of(context);
-
     return BaseScaffold(
       title: "Home Screen",
       body: SafeArea(
@@ -23,15 +19,15 @@ class HomeScreen extends StatelessWidget {
               const Text("home screen"),
               ElevatedButton(
                 onPressed: () {
-                  router.push(const PostRoute());
+                  context.go('/post'); // Changed to go_router
                 },
-                child: const Text("Go to first screen"),
+                child: const Text("Go to Post Screen"),
               ),
               ElevatedButton(
                 onPressed: () {
-                  router.push(UserRoute());
+                  context.go('/user'); // Changed to go_router
                 },
-                child: const Text("Go to second screen"),
+                child: const Text("Go to User Screen"),
               ),
             ],
           ),
